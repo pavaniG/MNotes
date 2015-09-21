@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vxp-YT-Ueg">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Login View-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="loginView" id="BYZ-38-t0r" customClass="MNLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3p-w4-R7f">
+                                <rect key="frame" x="240" y="285" width="121" height="30"/>
+                                <state key="normal" title="Login to DropBox">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="synToDropBox:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SFz-Nv-IWI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8Y-8O-HQM">
+                                <rect key="frame" x="272" y="234" width="57" height="30"/>
+                                <state key="normal" title="Account">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadNotesListView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qZs-kN-Agn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="A3p-w4-R7f" secondAttribute="centerX" id="FFv-d7-kG7"/>
+                            <constraint firstItem="A3p-w4-R7f" firstAttribute="top" secondItem="V8Y-8O-HQM" secondAttribute="bottom" constant="21" id="I73-ui-LaG"/>
+                            <constraint firstAttribute="centerY" secondItem="A3p-w4-R7f" secondAttribute="centerY" id="bV5-cb-kYi"/>
+                            <constraint firstItem="V8Y-8O-HQM" firstAttribute="centerX" secondItem="A3p-w4-R7f" secondAttribute="centerX" id="bWg-OZ-9Gt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Login View" id="gZP-sj-fjV"/>
+                    <connections>
+                        <outlet property="dbLoginBtn" destination="A3p-w4-R7f" id="hJT-rS-BXX"/>
+                        <segue destination="hhR-DR-Lye" kind="show" identifier="listViewController" id="aKp-Jy-wDj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-571" y="242.99999999999994"/>
+        </scene>
+        <!--My Notes-->
+        <scene sceneID="IOe-jy-513">
+            <objects>
+                <tableViewController storyboardIdentifier="listViewController" id="hhR-DR-Lye" customClass="MNListViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2ym-1P-wpF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="listViewCell" id="DD0-cl-HYd">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DD0-cl-HYd" id="TPm-Le-bB4">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="RXd-bx-NCe" kind="show" identifier="NotesView" id="u1g-E5-bQj"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hhR-DR-Lye" id="cmL-eE-M5q"/>
+                            <outlet property="delegate" destination="hhR-DR-Lye" id="qKQ-gj-xKv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Notes" id="3kl-pK-NYm">
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="sbs-dv-HmC">
+                            <connections>
+                                <action selector="createNewNotes:" destination="hhR-DR-Lye" id="MNc-1t-KM4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yt3-iC-atp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="124" y="-362"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="o46-43-Xgf">
+            <objects>
+                <viewController id="RXd-bx-NCe" customClass="MNNotesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RiM-gZ-KdD"/>
+                        <viewControllerLayoutGuide type="bottom" id="D41-5d-qWA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bmh-5z-W3N">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="Atx-mi-hbX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1HV-XD-m9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1045" y="-376"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mXC-go-ucs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vxp-YT-Ueg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6kR-OS-OGp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gzS-zG-uiI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AN6-Rx-Rrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1307" y="242.99999999999994"/>
+        </scene>
+    </scenes>
+</document>
